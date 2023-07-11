@@ -434,14 +434,17 @@ Less is more:)
   (and everyone's who's contributed to it since)
 
 
+Resources for this course can be found at my [Crash course in...](https://github.com/jessp01/crash-course-in) repo.
+Contributions (as well as shares) are welcomed.
 
 
 
+
+## Final note
 
 Psst..
-
 Liked this content and have a role I could be a good fit for? I’m open to suggestions. 
 See https://packman.io/#contact for ways to contact me.
 
 Cheers,
-
+Jesse
