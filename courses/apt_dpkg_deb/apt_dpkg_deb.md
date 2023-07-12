@@ -1,4 +1,4 @@
-%title: A crash course in handling deb packages
+%title: A crash course on handling deb packages
 %author: Jesse Portnoy <jesse@packman.io>
 %date: 2023-07-11
 
@@ -290,7 +290,7 @@ Usage summary for a *postinst* script:
 Similarly, there are removal hooks, which you can locate thusly: 
 
 ```
-$ ls -al /var/lib/dpkg/info/apache2*inst*
+$ ls -al /var/lib/dpkg/info/apache2*rm*
 ```
 
 Usage summary for a *postrm* script:
@@ -336,18 +336,17 @@ Here are some important files you'll find under the resulting
 - debian/patches: patches applied to the pristine source
 
 To build the package, make sure you've installed the `build-essential` package and invoke:
-
 ```
 $ dpkg-buildpackage -b -uc
 ```
 
 Note on `build-essential`: This package is a meta package that depends on a list of packages which are
 considered essential for building Debian packages. On my Debian 11, these are:
-
 ```
 Depends: libc6-dev | libc-dev, gcc (>= 4:12.3), g++ (>= 4:12.3), make, dpkg-dev (>= 1.17.11)
 ```
 
+If you intend to get serious about building debs, installing `devscripts` is also a good idea.
 Your package may, of course, have additional deps. To review them, see the *Build-Depends* section in 
 *debian/control*
 
