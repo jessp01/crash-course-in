@@ -88,7 +88,7 @@ The below command will:
 - Invoke *dpkg* to install all mandatory dependencies and, finally, `package-name` itself
 - Again using *dpkg*, run the configuration scripts for all needed packages
 
-```
+```sh
 # apt update && apt install <package-name>
 ```
 
@@ -114,7 +114,7 @@ you may want to automate that as well. We'll cover that in slide \#12.
 The *deb* spec allows you to specify mandatory dependencies (of course) as well recommended and suggested ones. 
 For instance, let's look at the metadata for the `apache2` package. We can do this by invoking:
 
-```
+```sh
 $ apt show apache2
 
 # or:
@@ -124,7 +124,7 @@ $ apt-cache show apache2
 
 Here's the truncated sample output:
 
-```
+```yaml
 Package: apache2
 Version: 2.4.57-2
 Priority: optional
@@ -185,37 +185,37 @@ In this slide, we'll cover some common queries one might want to make...
  
 Output all installed packages and their respective size:
 
-```
+```sh
 $ dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
 ```
 
 Output config files for package:
 
-```
+```sh
 $ dpkg-query -W -f='${Conffiles}\n' bash
 ```
 
 List packages whose name contains *gcc*:
 
-```
+```sh
 $ dpkg -l "*gcc*"
 ```
 
 List all files belonging to a given package:
 
-```
+```sh
 $ dpkg -L llvm-11-dev
 ```
 
 Output the package name to which a file belongs:
 
-```
+```sh
 $ dpkg -S /etc/issue
 ```
 
 Output the status for a given package (see `man dpkg` for possible states):
 
-```
+```sh
 $ dpkg -s mdp |grep Status
 ```
 
@@ -234,7 +234,7 @@ Say you're compiling a project and the configure phase fails with this message:
 Clearly, we're missing the *ncurses* header file but... How can we tell which package 
 provides it? Well, we can use `apt-file` (note: you may need to install it first):
 
-```
+```sh
 # apt-file update && apt-file search "ncurses.h"
 ```
 
@@ -244,7 +244,7 @@ the DB first, I've used the `#` prompt in the above.
 Another common query is to check what versions of a given package are available. 
 For that, we can use the *apt-cache* util:
 
-```
+```sh
 $ apt-cache policy gcc
 ``` 
 
@@ -261,13 +261,13 @@ The next few slides will cover some common uses cases around [re]configuring deb
 As *deb* supports interactively obtaining inputs from the user, one common scenario is wanting 
 to reconfigure a given package. This can be done thusly:
 
-```
+```sh
 # dpkg-reconfigure tzdata
 ```
 
 *{pre,post}install scripts*
 
-```
+```sh
 $ ls -al /var/lib/dpkg/info/apache2*inst*
 ```
 
@@ -289,7 +289,7 @@ Usage summary for a *postinst* script:
 
 Similarly, there are removal hooks, which you can locate thusly: 
 
-```
+```sh
 $ ls -al /var/lib/dpkg/info/apache2*rm*
 ```
 
@@ -322,7 +322,7 @@ Some use-cases:
 - Shamelessly steal some of the specs as you're creating a similar package :)
 
 To download the source package:
-```
+```sh
 $ apt-get source <package-name>
 ```
 
@@ -336,13 +336,13 @@ Here are some important files you'll find under the resulting
 - debian/patches: patches applied to the pristine source
 
 To build the package, make sure you've installed the `build-essential` package and invoke:
-```
+```sh
 $ dpkg-buildpackage -b -uc
 ```
 
 Note on `build-essential`: This package is a meta package that depends on a list of packages which are
 considered essential for building Debian packages. On my Debian 11, these are:
-```
+```yml
 Depends: libc6-dev | libc-dev, gcc (>= 4:12.3), g++ (>= 4:12.3), make, dpkg-dev (>= 1.17.11)
 ```
 
@@ -361,26 +361,26 @@ First, install the package manually. We'll use the *tzdata* package as an exampl
 already installed on your machine).
 
 To get the mandatory inputs, invoke:
-```
+```sh
 # debconf-show tzdata|grep "^*"
 ```
 
 From these, you'll need to create a response file, for example:
-```
+```sh
 tzdata tzdata/Areas select Europe
 tzdata tzdata/Zones/Europe select London
 tzdata tzdata/Zones/Etc select UTC
 ```
 
 Then, feed this to `debconf-set-selections`, thusly:
-```
+```sh
 # debconf-set-selections /path/to/tzdata/response/file
 ```
 
 To see that it was applied, invoke `debconf-show tzdata` once more.
 
 And finally, run:
-```
+```sh
 # dpkg-reconfigure -f noninteractive tzdata
 ```
 
