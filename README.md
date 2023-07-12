@@ -1,11 +1,12 @@
 ## crash-course-in
 
 Crash courses on various software engineering topics.
-
 Courses are organised under the `courses` dir. Each course includes:
 - An [mdp](https://github.com/visit1985/mdp) presentation
 - An [asciinema](https://asciinema.org/about) cast file
 - A link to https://asciinema.org where the cast can be viewed
+
+Since the `mdp` format closely resembles that of `markdown`, you can also view these whereever MD is supported.
 
 ## Courses
  
