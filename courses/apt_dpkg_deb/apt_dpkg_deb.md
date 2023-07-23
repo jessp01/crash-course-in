@@ -76,7 +76,7 @@ it will retrieve what data it has stored on the local system, even when offline.
 
 *apt-file* is a command line tool for searching for files in *deb* packages
 
-------------------------------------------------
+----------------------------------------------------------------------------
 
 ## Fetching and installing packages
 
@@ -107,7 +107,7 @@ If that's undesirable, pass the `-y` flag when invoking *apt* (e.g: `apt install
 Since the deb format also supports obtaining interactive inputs from the user (using the *debconf* mechanism), 
 you may want to automate that as well. We'll cover that in slide \#12. 
 
-------------------------------------------------------------------
+----------------------------------------------------------------------------
 
 ## A note on dependencies
 
@@ -132,16 +132,17 @@ Section: httpd
 Maintainer: Debian Apache Maintainers <debian-apache@lists.debian.org>
 Installed-Size: 580 kB
 Provides: httpd, httpd-cgi
+
+
+Pre-Depends: init-system-helpers (>= 1.54~)
+Depends: apache2-bin (= 2.4.57-2), apache2-data (= 2.4.57-2), apache2-utils (= 2.4.57-2), lsb-base, media-types, perl:any, procps
+Recommends: ssl-cert
+Suggests: apache2-doc, apache2-suexec-pristine | apache2-suexec-custom, www-browser
 ```
-*Pre-Depends: init-system-helpers (>= 1.54~)*
-*Depends: apache2-bin (= 2.4.57-2), apache2-data (= 2.4.57-2), apache2-utils (= 2.4.57-2), lsb-base,*
-*media-types, perl:any, procps*
-*Recommends: ssl-cert*
-*Suggests: apache2-doc, apache2-suexec-pristine | apache2-suexec-custom, www-browser*
 
 In the next slide, we'll elaborate as to what Pre-Depends, Depends, Recommends and Suggests indicate.
 
--------------------------------------------------
+----------------------------------------------------------------------------
 
 ## Package Dependencies & Relationships
 
@@ -174,7 +175,7 @@ This is done using the Depends, Pre-Depends, Recommends, Suggests, Enhances and 
 
 For more info, see [Declaring relationships between packages](https://www.debian.org/doc/debian-policy/ch-relationships.html)
 
--------------------------------------------------
+----------------------------------------------------------------------------
 
 ## Querying the local packages DB
 
@@ -219,7 +220,7 @@ Output the status for a given package (see `man dpkg` for possible states):
 $ dpkg -s mdp |grep Status
 ```
 
--------------------------------------------------
+----------------------------------------------------------------------------
 
 ## Querying remote repos
 
@@ -241,17 +242,18 @@ provides it? Well, we can use `apt-file` (note: you may need to install it first
 Note: `apt-file search` does not require super user privileges but because we need to update 
 the DB first, I've used the `#` prompt in the above.
 
+
 Another common query is to check what versions of a given package are available. 
-For that, we can use the *apt-cache* util:
+For that, we can use the `apt-cache` util:
 
 ```sh
 $ apt-cache policy gcc
-``` 
+```
 
 This will output the available versions for the `gcc` package, as well as the repos they 
 reside in.
 
--------------------------------------------------
+----------------------------------------------------------------------------
 
 ## Configuration operations
 
@@ -276,6 +278,7 @@ These will typically be shell scripts (though it's not a requirement and any lan
 *dpkg* will run these scripts with certain arguments, depending on the operation that needs to run.
 
 Usage summary for a *postinst* script:
+
 * <postinst> `configure` <most-recently-configured-version>
 * <old-postinst> `abort-upgrade` <new version>
 * <conflictor's-postinst> `abort-remove` `in-favour` <package> <new-version>
@@ -283,7 +286,7 @@ Usage summary for a *postinst* script:
   <failed-install-package> <version> `removing`
   <conflicting-package> <version>
 
--------------------------------------------------
+----------------------------------------------------------------------------
 
 *{pre,post}rm scripts*
 
@@ -311,7 +314,8 @@ to finish the deployment.
 
 (For more details, see [the Debian docs](http://www.debian.org/doc/debian-policy) or the debian-policy package)
 
--------------------------------------------------
+----------------------------------------------------------------------------
+
 
 ## Downloading & building packages from source
 
@@ -350,7 +354,7 @@ If you intend to get serious about building debs, installing `devscripts` is als
 Your package may, of course, have additional deps. To review them, see the *Build-Depends* section in 
 *debian/control*
 
--------------------------------------------------
+----------------------------------------------------------------------------
 
 ## Automating the installation of packages that require inputs
 
@@ -392,7 +396,8 @@ Note II: the `dpkg-reconfigure` command above is good for testing purposes, for 
 you'll want to `export DEBIAN_FRONTEND=noninteractive` in your script so that you're not prompted for 
 any inputs whilst installing packages.
 
--------------------------------------------------
+----------------------------------------------------------------------------
+
 
 ## Removing packages
 
@@ -412,6 +417,7 @@ a case, you may also want to inspect your past debconf selections (and potential
 giving it another go.
 
 To see the difference in action:
+
 - List all `<package-name>` config files with: `dpkg-query -W -f='${Conffiles}\n' <package-name>`
 - Run `apt remove <package-name>` 
 - Conf files should still be on your FS
@@ -422,7 +428,7 @@ Lastly, `apt autoremove` requires no arguments as its job is to get rid of all u
 This is handy for clearing space, as well as keeping your system lean. You know what they say... 
 Less is more:)
 
--------------------------------------------------
+----------------------------------------------------------------------------
 
 ## My sincere thanks to...
 
