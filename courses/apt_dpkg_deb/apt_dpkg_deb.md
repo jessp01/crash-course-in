@@ -179,7 +179,7 @@ For more info, see [Declaring relationships between packages](https://www.debian
 
 ## Querying the local packages DB
 
-One of the clear advantages of using packages managers is having a DB you can query to ascertain 
+One of the clear advantages of using package managers is having a DB you can query to ascertain 
 what's installed on your system, of what version, where the files reside, their nature 
 (config, doc, binary, etc) and what package owns what file.
 In this slide, we'll cover some common queries one might want to make...
@@ -273,7 +273,7 @@ to reconfigure a given package. This can be done thusly:
 $ ls -al /var/lib/dpkg/info/apache2*inst*
 ```
 
-The above command will output the pre/post-install config scripts invoked when install the `apache2` package.
+The above command will output the pre/post-install config scripts invoked when installing the `apache2` package.
 These will typically be shell scripts (though it's not a requirement and any language can be used).
 *dpkg* will run these scripts with certain arguments, depending on the operation that needs to run.
 
@@ -413,7 +413,7 @@ custom version of it. The config files you've laboured on will still be needed a
 recreate them.
 
 `apt purge <package-name>` is handy if your package is malfunctioning and you want to start anew. In such 
-a case, you may also want to inspect your past debconf selections (and potentially altering them) before 
+a case, you may also want to inspect your past debconf selections (and potentially alter them) before 
 giving it another go.
 
 To see the difference in action:

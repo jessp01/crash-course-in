@@ -127,7 +127,6 @@ you may want to automate that as well. We'll cover that in slide \#12.
 
 The *deb* spec allows you to specify mandatory dependencies (of course) as well recommended and suggested ones. 
 For instance, let's look at the metadata for the `apache2` package. We can do this by invoking:
-
 ```sh
 $ apt show apache2
 
@@ -137,7 +136,6 @@ $ apt-cache show apache2
 ```
 
 Here's the truncated sample output:
-
 ```yaml
 Package: apache2
 Version: 2.4.57-2
@@ -194,19 +192,16 @@ For more info, see [Declaring relationships between packages](https://www.debian
 
 ## Querying the local packages DB
 
-One of the clear advantages of using packages managers is having a DB you can query to ascertain 
+One of the clear advantages of using package managers is having a DB you can query to ascertain 
 what's installed on your system, of what version, where the files reside, their nature 
 (config, doc, binary, etc) and what package owns what file.
 Below are some common queries one might want to make...
  
 Output all installed packages and their respective size:
-
 ```sh
 $ dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
 ```
-
 Output config files for package:
-
 ```sh
 $ dpkg-query -W -f='${Conffiles}\n' bash
 ```
@@ -215,7 +210,6 @@ Sample output:
  /etc/bash.bashrc 89269e1298235f1b12b4c16e4065ad0d
  /etc/skel/.bash_logout 22bfb8c1dd94b5f3813a2b25da67463f
 ```
-
 List packages whose name contains *gcc*:
 ```sh
 $ dpkg -l "*gcc*"
@@ -232,12 +226,10 @@ List all files belonging to a given package:
 ```sh
 $ dpkg -L llvm-11-dev
 ```
-
 Output the package name to which a file belongs:
 ```sh
 $ dpkg -S /etc/issue
 ```
-
 Output the status for a given package (see `man dpkg` for possible states):
 ```sh
 $ dpkg -s mdp |grep Status
@@ -302,7 +294,7 @@ gcc:
 $ ls -al /var/lib/dpkg/info/apache2*inst*
 ```
 
-The above command will output the pre/post-install config scripts invoked when install the `apache2` package.
+The above command will output the pre/post-install config scripts invoked when installing the `apache2` package.
 These will typically be shell scripts (though it's not a requirement and any language can be used).
 *dpkg* will run these scripts with certain arguments, depending on the operation that needs to run.
 
@@ -457,7 +449,7 @@ custom version of it. The config files you've laboured on will still be needed a
 recreate them.
 
 `apt purge <package-name>` is handy if your package is malfunctioning and you want to start anew. In such 
-a case, you may also want to inspect your past `debconf` selections (and potentially altering them) before 
+a case, you may also want to inspect your past `debconf` selections (and potentially alter them) before 
 giving it another go.
 
 To see the difference in action:
