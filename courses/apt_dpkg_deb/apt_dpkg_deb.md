@@ -135,7 +135,8 @@ Provides: httpd, httpd-cgi
 
 
 Pre-Depends: init-system-helpers (>= 1.54~)
-Depends: apache2-bin (= 2.4.57-2), apache2-data (= 2.4.57-2), apache2-utils (= 2.4.57-2), lsb-base, media-types, perl:any, procps
+Depends: apache2-bin (= 2.4.57-2), apache2-data (= 2.4.57-2), apache2-utils (= 2.4.57-2), lsb-base,
+media-types, perl:any, procps
 Recommends: ssl-cert
 Suggests: apache2-doc, apache2-suexec-pristine | apache2-suexec-custom, www-browser
 ```
