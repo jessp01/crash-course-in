@@ -184,7 +184,7 @@ training courses that seem to be very popular these days.
 
 To install `super-zaje`, visit the [installation intructions section](https://github.com/jessp01/zaje#installing-super-zaje)
 
-The source for this presentation can be found in my [Crash course in...](https://github.com/jessp01/crash-course-in) repo.
+The source `markdown` for this presentation can be found in my [Crash course in...](https://github.com/jessp01/crash-course-in/tree/main/courses/super-zaje) repo.
 Contributions (as well as shares) are welcomed.
 
 ## Final note
