@@ -102,6 +102,7 @@ where it should clearly be "cannot remove". I also had to add a closing `'` arou
 ### Important notes:
 
 `zaje` can detect the lexer to use based on:
+
 * The file name (when acting in `cat` mode)
 * The first line of text (so it will usually work nicely when piping as well)
 
@@ -160,7 +161,7 @@ x16\ xC2t\x9F\xEBh6\XA7\x14\x17\ xCDO\ xBE\x00\X00_\xCO/\xCOO\XxCO+\xCO, \xCC\XA
 \XA9\xCO\x13\xCO\x99\xCO\x14\xCO" 400 157
 ```
 
-The image was taken off an Nginx access log but the `server-log` produces good results for other logs as well. I tested
+The image was taken off an Nginx access log but the `server-log` lexer produces good results for other log formats as well. I tested
 it with Apache and other syslogs and would welcome any inputs or contributions of more customised lexers. 
 See [Revising and adding new lexers](https://github.com/jessp01/gohighlight#revising-and-adding-new-lexers) for details.
 
@@ -185,6 +186,17 @@ training courses that seem to be very popular these days.
 To install `super-zaje`, visit the [installation intructions section](https://github.com/jessp01/zaje#installing-super-zaje)
 
 The source `markdown` for this presentation can be found in my [Crash course in...](https://github.com/jessp01/crash-course-in/tree/main/courses/super-zaje) repo.
+
+I've used this command to convert it into a PDF:
+
+```sh
+md2pdf -i https://github.com/jessp01/crash-course-in/raw/main/courses/super-zaje/super-zaje.md \
+     -o super-zaje.pdf \
+    --theme dark \
+    --new-page-on-hr \
+    -s ~/.config/zaje/syntax_files
+```
+
 Contributions (as well as shares) are welcomed.
 
 ## Final note
@@ -196,4 +208,3 @@ See https://packman.io/#contact for ways to contact me.
 Cheers,
 Jesse
 
-![](/home/jesse/docs/packman.io_logo_small.png)
