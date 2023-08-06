@@ -190,7 +190,7 @@ The source `markdown` for this presentation can be found in my [Crash course in.
 I've used this command to convert it into a PDF:
 
 ```sh
-md2pdf -i https://github.com/jessp01/crash-course-in/raw/main/courses/super-zaje/super-zaje.md \
+$ md2pdf -i https://github.com/jessp01/crash-course-in/raw/main/courses/super-zaje/super-zaje.md \
      -o super-zaje.pdf \
     --theme dark \
     --new-page-on-hr \
