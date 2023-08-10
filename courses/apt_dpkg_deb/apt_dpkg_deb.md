@@ -28,7 +28,7 @@
 
 ## What is a `deb` package? 
 
-*deb* is the format, as well as filename extension of the software package format for the Debian Linux distribution 
+*deb* is the format, as well as filename extension of software packages for the Debian Linux distribution 
 and its derivatives. Debian packages are standard UNIX *ar* archives that include two tar archives. 
 One archive holds the control information and another contains the installable data.
 
@@ -55,7 +55,7 @@ In the next slide, we'll review some important APT utils and their respective fu
 ## The `apt` util
 
 *apt* provides a high-level CLI for the package management system. It is intended as an end user interface 
-and enables some options better suited for interactive usage by default compared to more specialized APT 
+and enables some options better suited for interactive usage compared to more specialized APT 
 tools like apt-get(8) and apt-cache(8).
 
 ## `apt-get`
@@ -68,7 +68,7 @@ Several *front-end* interfaces exist, such as *aptitude(8)*, *synaptic(8)* and *
 *apt-cache* performs a variety of operations on APT's package cache. *apt-cache* does not manipulate the state of the system; 
 it provides functionality to search and generate interesting output from the package metadata. 
 
-The metadata is acquired the `update` action of *apt-get/aptitude/apt*, so that it can be outdated but 
+The metadata is acquired via the `update` action of *apt-get/aptitude/apt*, so that it can be outdated but 
 in exchange *apt-cache* works independently of the availability of the configured sources; to wit: 
 it will retrieve what data it has stored on the local system, even when offline..
 
