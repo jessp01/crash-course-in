@@ -8,7 +8,7 @@ thanks to the magic of `tesseract` and [gosseract](https://github.com/otiai10/go
 
 The next slides demonstrate its usefulness with a few sample LinkedIn posts that shared code as screenshots (a common case, alas, due to LI's inexplicable refusal to support `markdown`).
 
-As an aside note, this presentation was written entirely in VIM and converted into a PDF using [mdtopdf](https://github.com/mandolyte/mdtopdf): a project by Cecil New, to which I've contributed syntax highlighting, powered by my [gohighlight project](https://github.com/jessp01/gohighlight), which `zaje` and `super-zaje` also leverage.
+As a side note, this presentation was written entirely in VIM and converted into a PDF using [mdtopdf](https://github.com/mandolyte/mdtopdf): a project by Cecil New, to which I've contributed syntax highlighting, powered by my [gohighlight project](https://github.com/jessp01/gohighlight), which `zaje` and `super-zaje` also leverage.
 If you find yourself struggling to create similar presentations without using GUI tools, give it a go:)
 
 ![](/home/jesse/docs/packman.io_logo_small.png)
@@ -139,7 +139,7 @@ void g(int n) {
 }
 ```
 
-## Last examples: a post by me:)
+## Last example: a post by me:)
 
 Here's the image of the original:
 
